@@ -8,11 +8,61 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$pink-palette: (
+ 50: #fbe2f0,
+ 100: #f5b6da,
+ 200: #f186c0,
+ 300: #ef4fa6,
+ 400: #ee0290,
+ 500: #ef0078,
+ 600: #dd0074,
+ 700: #c7006e,
+ 800: #b1006a,
+ 900: #880061,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
+$orange-palette: (
+ 50: #fff3e0,
+ 100: #ffdfb1,
+ 200: #ffca7f,
+ 300: #ffb54c,
+ 400: #ffa425,
+ 500: #ff9500,
+ 600: #fb8901,
+ 700: #f57902,
+ 800: #ef6902,
+ 900: #e64d03,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$dashboard-app-primary: mat.define-palette(mat.$indigo-palette);
-$dashboard-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$dashboard-app-primary: mat.define-palette($pink-palette, 700, 500, 900);
+$dashboard-app-accent: mat.define-palette($orange-palette, 700, 500, 900);
 
 // The warn palette is optional (defaults to red).
 $dashboard-app-warn: mat.define-palette(mat.$red-palette);
