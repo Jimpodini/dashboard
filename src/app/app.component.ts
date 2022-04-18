@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, ViewChild } from '@angular/core';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export default class AppComponent {
-  title = 'dashboard-app';
+  @ViewChild(MatSlideToggle) toggle: MatSlideToggle | undefined;
 
-  showFiller = false;
+  @HostBinding('class.darkMode') get darkMode() {
+    return this.toggle?.checked;
+  }
 }

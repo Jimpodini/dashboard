@@ -1,12 +1,24 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+<mat-drawer-container class="example-container">
+  <mat-drawer
+    #drawer
+    class="example-sidenav"
+    mode="side"
+    opened="true"
+    disableClose="true"
+  >
     <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
   </mat-drawer>
-
+  <mat-toolbar>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      aria-label="Example icon-button with dark mode icon"
+      (click)="toggle.toggle()"
+    >
+      <mat-icon>dark_mode</mat-icon>
+    </button>
+    <mat-slide-toggle #toggle></mat-slide-toggle>
+  </mat-toolbar>
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
       Toggle sidenav
