@@ -9,16 +9,15 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
-import CoreModule from './core/core.module';
-import NavbarItemComponent from './core/navbar-item/navbar-item.component';
+import NavbarItemComponent from './core/layout/navbar-item/navbar-item.component';
+import LayoutComponent from './core/layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarItemComponent],
+  declarations: [AppComponent, NavbarItemComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
