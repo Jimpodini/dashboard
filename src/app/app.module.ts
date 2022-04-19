@@ -10,9 +10,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
+import NavbarItemComponent from './core/navbar-item/navbar-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavbarItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

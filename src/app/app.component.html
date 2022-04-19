@@ -1,5 +1,22 @@
 <mat-drawer-container class="example-container">
-  <app-sidenav></app-sidenav>
+  <mat-drawer
+    #drawer
+    class="example-sidenav text-center mat-elevation-z1"
+    mode="side"
+    opened="true"
+    disableClose="true"
+  >
+    <mat-icon
+      color="primary"
+      style="width: 100px; height: 100px; font-size: 100px"
+      class="block"
+      >diamond</mat-icon
+    >
+    <app-navbar-item
+      class="w-64 block rounded-lg p-1"
+      matIcon="face"
+    ></app-navbar-item>
+  </mat-drawer>
   <mat-toolbar>
     <span class="example-spacer"></span>
     <button
