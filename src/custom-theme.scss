@@ -8,7 +8,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-$pink-palette: (
+$primary-palette: (
  50: #fbe2f0,
  100: #f5b6da,
  200: #f186c0,
@@ -33,7 +33,7 @@ $pink-palette: (
  )
 );
 
-$orange-palette: (
+$accent-palette: (
  50: #fff3e0,
  100: #ffdfb1,
  200: #ffca7f,
@@ -61,8 +61,8 @@ $orange-palette: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$dashboard-app-primary: mat.define-palette($pink-palette, 700, 500, 900);
-$dashboard-app-accent: mat.define-palette($orange-palette, 700, 500, 900);
+$dashboard-app-primary: mat.define-palette($primary-palette, 700, 500, 900);
+$dashboard-app-accent: mat.define-palette($accent-palette, 700, 500, 900);
 
 // The warn palette is optional (defaults to red).
 $dashboard-app-warn: mat.define-palette(mat.$red-palette);
@@ -84,6 +84,11 @@ $dashboard-app-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($dashboard-app-theme);
 
+$dashboard-app-primary: mat.define-palette($primary-palette, 300, 100, 500);
+$dashboard-app-accent: mat.define-palette($accent-palette, 300, 100, 500);
+
+// The warn palette is optional (defaults to red).
+$dashboard-app-warn: mat.define-palette(mat.$red-palette);
 $angular-dark-theme: mat.define-dark-theme(
   (
     color: (
