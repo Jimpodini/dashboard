@@ -11,9 +11,15 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import NavbarItemComponent from './core/layout/navbar-item/navbar-item.component';
 import LayoutComponent from './core/layout/layout.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarItemComponent, LayoutComponent],
+  declarations: [
+    AppComponent,
+    NavbarItemComponent,
+    LayoutComponent,
+    LandingPageComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
