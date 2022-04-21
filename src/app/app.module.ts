@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ChartsModule } from 'ng2-charts';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
@@ -29,6 +30,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MatToolbarModule,
     MatIconModule,
     MatSlideToggleModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
