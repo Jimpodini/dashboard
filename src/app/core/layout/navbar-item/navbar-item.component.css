@@ -1,9 +1,13 @@
-:host {
+.nav-item {
   display: flex;
-  justify-content: center;
   align-items: center;
+  text-align: left;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 0 16px 16px 0;
+  padding: 0.3rem;
 }
 
-:host:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.nav-item:hover {
+  background-color: lightgray;
 }
