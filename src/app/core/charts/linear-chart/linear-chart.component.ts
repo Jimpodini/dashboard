@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 import { Component } from '@angular/core';
-import Chart, { LineController } from 'chart.js/auto';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-linear-chart',
@@ -14,14 +14,19 @@ export default class LinearChartComponent {
 
   myChart: Chart | undefined;
 
+  latestData: number | undefined;
+
   ngOnInit() {
     this.canvas = <HTMLCanvasElement>document.getElementById('myChart');
 
     this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
 
-    const gradientBg = this.ctx.createLinearGradient(0, 0, 0, 400);
-    gradientBg.addColorStop(0, '#f5b6da');
-    gradientBg.addColorStop(1, 'white');
+    const gradientBg = this.ctx.createLinearGradient(0, 0, 0, 200);
+    gradientBg.addColorStop(0, '#fbe2f0');
+    gradientBg.addColorStop(1, '#FFFFFF');
+
+    const data = [65, 59, 80, 81, 56];
+    this.latestData = data[data.length - 1];
 
     this.myChart = new Chart(this.ctx, {
       type: 'line',
@@ -30,7 +35,7 @@ export default class LinearChartComponent {
         datasets: [
           {
             label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56],
+            data,
             borderColor: '#ef0078',
             tension: 0.4,
             pointRadius: 2,
@@ -58,25 +63,3 @@ export default class LinearChartComponent {
     });
   }
 }
-
-// class Custom extends LineController {
-//   override draw() {
-//     // Call bubble controller method to draw all the points
-//     // eslint-disable-next-line prefer-rest-params
-//     super.draw(arguments);
-
-//     // Now we can do some custom drawing for this dataset. Here we'll draw a red box around the first point in each dataset
-//     const meta = this.getMeta();
-//     const pt0 = meta.data[0];
-
-//     const { x, y } = pt0.getProps(['x', 'y']);
-//     const { radius } = pt0.options;
-
-//     const { ctx } = this.chart;
-//     ctx.save();
-//     ctx.strokeStyle = 'red';
-//     ctx.lineWidth = 1;
-//     ctx.strokeRect(x - radius, y - radius, 2 * radius, 2 * radius);
-//     ctx.restore();
-//   }
-// }
