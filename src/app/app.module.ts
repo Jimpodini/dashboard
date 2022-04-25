@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
@@ -33,6 +34,7 @@ import LinearChartComponent from './core/charts/linear-chart/linear-chart.compon
     MatToolbarModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
