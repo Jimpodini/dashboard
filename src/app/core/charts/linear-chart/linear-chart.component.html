@@ -1,3 +1,12 @@
-<app-container>
-  <canvas id="myChart" width="400" height="400"></canvas>
-</app-container>
+<mat-card class="example-card">
+  <mat-card-title>Bank balance</mat-card-title>
+  <mat-card-subtitle>Transaction account</mat-card-subtitle>
+  <mat-card-content>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <h1>{{ latestData }} kr</h1>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Code</button>
+    <button mat-button>Data</button>
+  </mat-card-actions>
+</mat-card>
