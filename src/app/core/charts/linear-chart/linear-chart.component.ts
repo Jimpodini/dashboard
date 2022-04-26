@@ -25,7 +25,7 @@ export default class LinearChartComponent {
     gradientBg.addColorStop(0, '#fbe2f0');
     gradientBg.addColorStop(1, '#FFFFFF');
 
-    const data = [65, 59, 80, 81, 56];
+    const data = [65214, 59121, 80789, 81203, 56781];
     this.latestData = data[data.length - 1];
 
     this.myChart = new Chart(this.ctx, {
