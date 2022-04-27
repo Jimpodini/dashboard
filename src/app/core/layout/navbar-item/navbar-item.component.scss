@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "../../../../custom-theme.scss";
+
+$color-config:    mat.get-color-config($dashboard-app-theme);
+$primary-palette: map.get($color-config, 'primary');
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 0 16px 16px 0;
+  padding: 0.3rem;
+}
+
+.nav-item:hover {
+  background-color: mat.get-color-from-palette($primary-palette, 500);;
+}
