@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export default class NavbarItemComponent {
   @Input() matIcon: string = '';
+
+  @Input() text: string = '';
 }
