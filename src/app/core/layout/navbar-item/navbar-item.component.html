@@ -1,8 +1,6 @@
-<div class="nav-item">
-  <mat-icon class="mr-3">{{ matIcon }}</mat-icon
-  ><a href="#" class="text-lg">Test</a>
-</div>
-<div class="nav-item">
-  <mat-icon class="mr-3">{{ matIcon }}</mat-icon
-  ><a href="#" class="text-lg">Longer text</a>
-</div>
+<a [routerLink]="route" class="text-lg" routerLinkActive="active-route">
+  <div class="nav-item w-64 block rounded-lg mr-3">
+    <mat-icon class="mr-3">{{ matIcon }}</mat-icon
+    >{{ text }}
+  </div>
+</a>

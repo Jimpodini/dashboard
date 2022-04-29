@@ -9,4 +9,6 @@ export default class NavbarItemComponent {
   @Input() matIcon: string = '';
 
   @Input() text: string = '';
+
+  @Input() route: string = '';
 }

@@ -9,4 +9,14 @@
   .nav-item:hover {
     background-color: mat.get-color-from-palette($background, hover);
   }
+
+  .active-route {
+    color: mat.get-color-from-palette($primary-palette);
+    font-weight: bold;
+    background-color: mat.get-color-from-palette($background, hover);
+
+    div {
+      background-color: mat.get-color-from-palette($background, hover);
+    }
+  }
 }
