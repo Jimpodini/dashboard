@@ -15,6 +15,7 @@ import LayoutComponent from './core/layout/layout.component';
 import LandingPageComponent from './pages/landing-page/landing-page.component';
 import ContainerComponent from './core/container/container.component';
 import LinearChartComponent from './core/charts/linear-chart/linear-chart.component';
+import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import LinearChartComponent from './core/charts/linear-chart/linear-chart.compon
     LandingPageComponent,
     ContainerComponent,
     LinearChartComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,

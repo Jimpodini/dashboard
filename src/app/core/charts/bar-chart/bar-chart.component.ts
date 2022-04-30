@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
-  selector: 'app-linear-chart',
-  templateUrl: './linear-chart.component.html',
-  styleUrls: ['./linear-chart.component.css'],
+  selector: 'app-bar-chart',
+  templateUrl: './bar-chart.component.html',
+  styleUrls: ['./bar-chart.component.css'],
 })
-export default class LinearChartComponent {
+export default class BarChartComponent {
   canvas: HTMLCanvasElement | undefined;
 
   ctx: CanvasRenderingContext2D | undefined;
@@ -17,7 +17,7 @@ export default class LinearChartComponent {
   latestData: number | undefined;
 
   ngOnInit() {
-    this.canvas = <HTMLCanvasElement>document.getElementById('myChart');
+    this.canvas = <HTMLCanvasElement>document.getElementById('myBarChart');
 
     this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
 
