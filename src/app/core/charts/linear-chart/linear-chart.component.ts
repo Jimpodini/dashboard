@@ -31,10 +31,10 @@ export default class LinearChartComponent {
     this.myChart = new Chart(this.ctx, {
       type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        labels: ['January', 'February', 'March', 'April', 'May'],
         datasets: [
           {
-            label: 'My First Dataset',
+            label: 'Bank balance',
             data,
             borderColor: '#ef0078',
             tension: 0.4,

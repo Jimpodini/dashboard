@@ -21,27 +21,19 @@ export default class BarChartComponent {
 
     this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
 
-    const gradientBg = this.ctx.createLinearGradient(0, 0, 0, 200);
-    gradientBg.addColorStop(0, '#fbe2f0');
-    gradientBg.addColorStop(1, '#FFFFFF');
-
-    const data = [65214, 59121, 80789, 81203, 56781];
+    const data = [3, 5, 4, 8, 10];
     this.latestData = data[data.length - 1];
 
     this.myChart = new Chart(this.ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        labels: ['January', 'February', 'March', 'April', 'May'],
         datasets: [
           {
-            label: 'My First Dataset',
+            label: 'Transactions',
             data,
             borderColor: '#ef0078',
-            tension: 0.4,
-            pointRadius: 2,
-            fill: true,
-            backgroundColor: gradientBg,
-            pointBackgroundColor: '#ef0078',
+            backgroundColor: '#ef0078',
           },
         ],
       },
