@@ -87,16 +87,16 @@ $dashboard-app-theme: mat.define-light-theme(
 @include navbar-item.theme($dashboard-app-theme);
 
 
-$dashboard-app-primary: mat.define-palette($primary-palette, 300, 100, 500);
-$dashboard-app-accent: mat.define-palette($accent-palette, 300, 100, 500);
+$dashboard-app-primary-dark: mat.define-palette($accent-palette, 700, 500, 900);
+$dashboard-app-accent-dark: mat.define-palette($primary-palette, 700, 500, 900);
 
 // The warn palette is optional (defaults to red).
 $dashboard-app-warn: mat.define-palette(mat.$red-palette);
 $angular-dark-theme: mat.define-dark-theme(
   (
     color: (
-      primary: $dashboard-app-primary,
-      accent: $dashboard-app-accent,
+      primary: $dashboard-app-primary-dark,
+      accent: $dashboard-app-accent-dark,
       warn: $dashboard-app-warn,
     ),
   )
