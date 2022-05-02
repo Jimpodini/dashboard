@@ -16,6 +16,7 @@ import LandingPageComponent from './pages/landing-page/landing-page.component';
 import ContainerComponent from './core/container/container.component';
 import LinearChartComponent from './core/charts/linear-chart/linear-chart.component';
 import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
+import ThemeService from './services/theme.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
     MatSlideToggleModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}

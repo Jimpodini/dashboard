@@ -1,6 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
+import ThemeService from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-linear-chart',
@@ -15,6 +16,8 @@ export default class LinearChartComponent {
   myChart: Chart | undefined;
 
   latestData: number | undefined;
+
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
     this.canvas = <HTMLCanvasElement>document.getElementById('myChart');
@@ -61,6 +64,8 @@ export default class LinearChartComponent {
         },
       },
     });
+
+    this.themeService.themeObservable.subscribe(console.log);
   }
 
   ngOnDestroy() {
