@@ -65,7 +65,9 @@ export default class LinearChartComponent {
       },
     });
 
-    this.themeService.themeObservable.subscribe(console.log);
+    this.themeService
+      .getThemeObservable()
+      .subscribe((value) => console.log(value));
   }
 
   ngOnDestroy() {
