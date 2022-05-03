@@ -6,7 +6,7 @@
   $primary-palette: map.get($color-config, primary);
   $background: map.get($color-config, background);
 
-  .nav-item:hover {
+  a:not(.active-route) > .nav-item:hover {
     background-color: mat.get-color-from-palette($background, hover);
   }
 
@@ -16,7 +16,7 @@
     background-color: mat.get-color-from-palette($background, hover);
 
     div {
-      background-color: mat.get-color-from-palette($background, hover);
+      background-color: mat.get-color-from-palette($primary-palette, 50);
     }
   }
 }
