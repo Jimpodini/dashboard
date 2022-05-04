@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { distinctUntilChanged, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class ThemeService {
-  private themeSubject = new Subject<Theme>();
+  private themeSubject = new BehaviorSubject<Theme>('light');
 
   themeObservable$ = this.themeSubject.asObservable();
 
@@ -18,4 +18,4 @@ export default class ThemeService {
   }
 }
 
-type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light';
