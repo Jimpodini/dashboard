@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
@@ -38,6 +39,7 @@ import ThemeService from './services/theme.service';
     MatIconModule,
     MatSlideToggleModule,
     MatCardModule,
+    MatDialogModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent],
