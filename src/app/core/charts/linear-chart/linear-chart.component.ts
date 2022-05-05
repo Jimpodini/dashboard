@@ -1,7 +1,14 @@
 // eslint-disable-next-line max-classes-per-file
 import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
-import ThemeService from 'src/app/services/theme.service';
+import { MatDialog } from '@angular/material/dialog';
+import Chart, { ChartConfiguration } from 'chart.js/auto';
+import ThemeService, { Theme } from 'src/app/services/theme.service';
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  template: '<h1>test</h1>',
+})
+export class DialogContentExampleDialog {}
 
 @Component({
   selector: 'app-linear-chart',
@@ -17,21 +24,19 @@ export default class LinearChartComponent {
 
   latestData: number | undefined;
 
-  constructor(private themeService: ThemeService) {}
+  config: ChartConfiguration<'line', number[], string>;
+
+  constructor(private themeService: ThemeService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.canvas = <HTMLCanvasElement>document.getElementById('myChart');
 
     this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
 
-    const gradientBg = this.ctx.createLinearGradient(0, 0, 0, 200);
-    gradientBg.addColorStop(0, '#fbe2f0');
-    gradientBg.addColorStop(1, '#FFFFFF');
-
     const data = [65214, 59121, 80789, 81203, 56781];
     this.latestData = data[data.length - 1];
 
-    this.myChart = new Chart(this.ctx, {
+    this.config = {
       type: 'line',
       data: {
         labels: ['January', 'February', 'March', 'April', 'May'],
@@ -43,7 +48,6 @@ export default class LinearChartComponent {
             tension: 0.4,
             pointRadius: 2,
             fill: true,
-            backgroundColor: gradientBg,
             pointBackgroundColor: '#ef0078',
           },
         ],
@@ -63,11 +67,40 @@ export default class LinearChartComponent {
           },
         },
       },
-    });
+    };
+    this.myChart = new Chart(this.ctx, this.config);
 
-    this.themeService
-      .getThemeObservable()
-      .subscribe((value) => console.log(value));
+    this.themeService.getThemeObservable().subscribe((theme) => {
+      console.log(theme);
+      this.setThemeColor(theme);
+    });
+  }
+
+  setThemeColor(theme: Theme): void {
+    if (theme === 'dark') {
+      const gradientBgDark = this.ctx?.createLinearGradient(0, 0, 0, 200);
+      gradientBgDark?.addColorStop(0, '#303030');
+      gradientBgDark?.addColorStop(1, '#424242');
+      this.config.data.datasets[0].backgroundColor = gradientBgDark;
+      this.config.data.datasets[0].borderColor = '#ff9500';
+      this.config.data.datasets[0].pointBackgroundColor = '#ff9500';
+    } else {
+      const gradientBg = this.ctx?.createLinearGradient(0, 0, 0, 200);
+      gradientBg?.addColorStop(0, '#fbe2f0');
+      gradientBg?.addColorStop(1, '#FFFFFF');
+      this.config.data.datasets[0].backgroundColor = gradientBg;
+      this.config.data.datasets[0].borderColor = '#ef0078';
+      this.config.data.datasets[0].pointBackgroundColor = '#ef0078';
+    }
+    this.myChart?.update();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnDestroy() {

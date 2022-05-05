@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  path {
+    fill: blue;
+  }
+}
