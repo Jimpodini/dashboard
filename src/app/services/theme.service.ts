@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged, Observable } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export default class ThemeService {
   }
 
   getThemeObservable(): Observable<Theme> {
-    return this.themeObservable$.pipe(distinctUntilChanged());
+    return this.themeObservable$.pipe(distinctUntilChanged(), shareReplay(1));
   }
 }
 
