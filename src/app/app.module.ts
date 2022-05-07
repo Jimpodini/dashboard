@@ -14,7 +14,6 @@ import AppComponent from './app.component';
 import NavbarItemComponent from './core/layout/navbar-item/navbar-item.component';
 import LayoutComponent from './core/layout/layout.component';
 import LandingPageComponent from './pages/landing-page/landing-page.component';
-import ContainerComponent from './core/container/container.component';
 import LinearChartComponent from './core/charts/linear-chart/linear-chart.component';
 import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
 import ThemeService from './services/theme.service';
@@ -25,7 +24,6 @@ import ThemeService from './services/theme.service';
     NavbarItemComponent,
     LayoutComponent,
     LandingPageComponent,
-    ContainerComponent,
     LinearChartComponent,
     BarChartComponent,
   ],
