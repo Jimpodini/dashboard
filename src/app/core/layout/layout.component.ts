@@ -1,5 +1,4 @@
-import { Component, HostBinding, ViewChild } from '@angular/core';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { Component } from '@angular/core';
 import ThemeService from 'src/app/services/theme.service';
 
 @Component({
@@ -8,12 +7,9 @@ import ThemeService from 'src/app/services/theme.service';
   styleUrls: ['./layout.component.scss'],
 })
 export default class LayoutComponent {
-  @ViewChild(MatSlideToggle) toggle: MatSlideToggle | undefined;
-
-  @HostBinding('class.darkMode') get darkMode() {
-    this.themeService.switchTheme(this.toggle?.checked ? 'dark' : 'light');
-    return this.toggle?.checked;
-  }
-
   constructor(private themeService: ThemeService) {}
+
+  toggleDarkTheme(checked: boolean) {
+    this.themeService.switchTheme(checked ? 'dark' : 'light');
+  }
 }
