@@ -14,9 +14,10 @@ import AppComponent from './app.component';
 import NavbarItemComponent from './core/layout/navbar-item/navbar-item.component';
 import LayoutComponent from './core/layout/layout.component';
 import LandingPageComponent from './pages/landing-page/landing-page.component';
+import ThemeService from './services/theme.service';
 import LinearChartComponent from './core/charts/linear-chart/linear-chart.component';
 import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
-import ThemeService from './services/theme.service';
+import DoughnutChart from './core/charts/doughnut-chart/doughnut-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import ThemeService from './services/theme.service';
     LandingPageComponent,
     LinearChartComponent,
     BarChartComponent,
+    DoughnutChart,
   ],
   imports: [
     BrowserModule,
