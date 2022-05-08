@@ -2,8 +2,8 @@
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
 // Plus imports for other components in your app.
-@use './app/core/layout/navbar-item/navbar-item-theme' as navbar-item;
-@use './app/core/layout/layout-theme' as layout-theme;
+@use "./app/core/layout/navbar-item/navbar-item-theme" as navbar-item;
+@use "./app/core/layout/layout-theme" as layout-theme;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -11,53 +11,53 @@
 @include mat.core();
 
 $primary-palette: (
- 50: #fbe2f0,
- 100: #f5b6da,
- 200: #f186c0,
- 300: #ef4fa6,
- 400: #ee0290,
- 500: #ef0078,
- 600: #dd0074,
- 700: #c7006e,
- 800: #b1006a,
- 900: #880061,
- contrast: (
-   50: rgba(black, 0.87),
-   100: rgba(black, 0.87),
-   200: rgba(black, 0.87),
-   300: rgba(black, 0.87),
-   400: rgba(black, 0.87),
-   500: rgba(black, 0.87),
-   600: white,
-   700: white,
-   800: white,
-   900: white,
- )
+  50: #fbe2f0,
+  100: #f5b6da,
+  200: #f186c0,
+  300: #ef4fa6,
+  400: #ee0290,
+  500: #ef0078,
+  600: #dd0074,
+  700: #c7006e,
+  800: #b1006a,
+  900: #880061,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
 );
 
 $accent-palette: (
- 50: #fff3e0,
- 100: #ffdfb1,
- 200: #ffca7f,
- 300: #ffb54c,
- 400: #ffa425,
- 500: #ff9500,
- 600: #fb8901,
- 700: #f57902,
- 800: #ef6902,
- 900: #e64d03,
- contrast: (
-   50: rgba(black, 0.87),
-   100: rgba(black, 0.87),
-   200: rgba(black, 0.87),
-   300: rgba(black, 0.87),
-   400: rgba(black, 0.87),
-   500: rgba(black, 0.87),
-   600: white,
-   700: white,
-   800: white,
-   900: white,
- )
+  50: #fff3e0,
+  100: #ffdfb1,
+  200: #ffca7f,
+  300: #ffb54c,
+  400: #ffa425,
+  500: #ff9500,
+  600: #fb8901,
+  700: #f57902,
+  800: #ef6902,
+  900: #e64d03,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
 );
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -88,7 +88,6 @@ $dashboard-app-theme: mat.define-light-theme(
 @include navbar-item.theme($dashboard-app-theme);
 @include layout-theme.theme($dashboard-app-theme);
 
-
 $dashboard-app-primary-dark: mat.define-palette($accent-palette, 700, 500, 900);
 $dashboard-app-accent-dark: mat.define-palette($primary-palette, 700, 500, 900);
 
@@ -107,25 +106,29 @@ $angular-dark-theme: mat.define-dark-theme(
 .darkMode {
   @include mat.all-component-themes($angular-dark-theme);
   @include navbar-item.theme($angular-dark-theme);
+  @include layout-theme.theme($angular-dark-theme);
 }
 
 // Custom typography
 $my-custom-typography: mat.define-typography-config(
-  $font-family:   'Open Sans, "Helvetica Neue", sans-serif',
-  $display-4:     mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
-  $display-3:     mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
-  $display-2:     mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
-  $display-1:     mat.define-typography-level(34px, 40px, 400),
-  $headline:      mat.define-typography-level(24px, 32px, 400),
-  $title:         mat.define-typography-level(20px, 32px, 500),
-  $subheading-2:  mat.define-typography-level(16px, 28px, 400),
-  $subheading-1:  mat.define-typography-level(15px, 24px, 400),
-  $body-2:        mat.define-typography-level(14px, 24px, 500),
-  $body-1:        mat.define-typography-level(14px, 20px, 400),
-  $caption:       mat.define-typography-level(12px, 20px, 400),
-  $button:        mat.define-typography-level(14px, 14px, 500),
+  $font-family: 'Open Sans, "Helvetica Neue", sans-serif',
+  $display-4:
+    mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3:
+    mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2:
+    mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
   // Line-height must be unit-less fraction of the font-size.
-  $input:         mat.define-typography-level(inherit, 1.125, 400)
+  $input: mat.define-typography-level(inherit, 1.125, 400),
 );
 
 @include mat.core($my-custom-typography);
