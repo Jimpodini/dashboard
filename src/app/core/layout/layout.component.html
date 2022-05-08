@@ -22,10 +22,19 @@
       text="Bar chart"
       route="barchart"
     ></app-navbar-item>
+    <app-navbar-item
+      matIcon="trip_origin"
+      text="Doughnut chart"
+      route="doughnutchart"
+    ></app-navbar-item>
   </mat-drawer>
   <mat-toolbar>
     <span class="example-spacer"></span>
-    <a class="github-icon" href="#">
+    <a
+      class="github-icon"
+      href="https://github.com/Jimpodini/dashboard"
+      target="_blank"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -40,11 +49,14 @@
     <button
       mat-icon-button
       aria-label="Example icon-button with dark mode icon"
-      (click)="toggle.toggle()"
+      (click)="toggle.toggle(); toggleDarkTheme(toggle.checked)"
     >
       <mat-icon>dark_mode</mat-icon>
     </button>
-    <mat-slide-toggle #toggle></mat-slide-toggle>
+    <mat-slide-toggle
+      #toggle
+      (change)="toggleDarkTheme($event.checked)"
+    ></mat-slide-toggle>
   </mat-toolbar>
   <div class="example-sidenav-content">
     <router-outlet></router-outlet>
