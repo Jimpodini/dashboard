@@ -8,6 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import {
+  HighlightModule,
+  HighlightOptions,
+  HIGHLIGHT_OPTIONS,
+} from 'ngx-highlightjs';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
@@ -18,6 +23,7 @@ import ThemeService from './services/theme.service';
 import LinearChartComponent from './core/charts/linear-chart/linear-chart.component';
 import BarChartComponent from './core/charts/bar-chart/bar-chart.component';
 import DoughnutChart from './core/charts/doughnut-chart/doughnut-chart.component';
+import CodePreviewComponent from './core/code-preview/code-preview.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import DoughnutChart from './core/charts/doughnut-chart/doughnut-chart.component
     LinearChartComponent,
     BarChartComponent,
     DoughnutChart,
+    CodePreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +47,21 @@ import DoughnutChart from './core/charts/doughnut-chart/doughnut-chart.component
     MatSlideToggleModule,
     MatCardModule,
     MatDialogModule,
+    HighlightModule,
   ],
-  providers: [ThemeService],
+  providers: [
+    ThemeService,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: <HighlightOptions>{
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        themePath: 'assets/styles/github.css',
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+        },
+      },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}
