@@ -1,21 +1,20 @@
 // eslint-disable-next-line max-classes-per-file
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
+import { Subscription } from 'rxjs';
 import ThemeService, { Theme } from 'src/app/services/theme.service';
-
-@Component({
-  selector: 'dialog-content-example-dialog',
-  template: '<h1>test</h1>',
-})
-export class DialogContentExampleDialog {}
+import CodePreviewComponent from '../../code-preview/code-preview.component';
+import { DashboardChart } from '../dashboard-chart.interface';
 
 @Component({
   selector: 'app-linear-chart',
   templateUrl: './linear-chart.component.html',
   styleUrls: ['./linear-chart.component.css'],
 })
-export default class LinearChartComponent {
+export default class LinearChartComponent
+  implements OnInit, OnDestroy, DashboardChart
+{
   canvas: HTMLCanvasElement | undefined;
 
   ctx: CanvasRenderingContext2D | undefined;
@@ -25,6 +24,8 @@ export default class LinearChartComponent {
   latestData: number | undefined;
 
   config: ChartConfiguration<'line', number[], string>;
+
+  s1: Subscription;
 
   constructor(private themeService: ThemeService, public dialog: MatDialog) {}
 
@@ -70,8 +71,7 @@ export default class LinearChartComponent {
     };
     this.myChart = new Chart(this.ctx, this.config);
 
-    this.themeService.getThemeObservable().subscribe((theme) => {
-      console.log(theme);
+    this.s1 = this.themeService.getThemeObservable().subscribe((theme) => {
       this.setThemeColor(theme);
     });
   }
@@ -96,7 +96,7 @@ export default class LinearChartComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    const dialogRef = this.dialog.open(CodePreviewComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -105,5 +105,6 @@ export default class LinearChartComponent {
 
   ngOnDestroy() {
     this.myChart?.destroy();
+    this.s1.unsubscribe();
   }
 }
