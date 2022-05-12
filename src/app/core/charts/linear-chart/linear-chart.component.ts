@@ -27,6 +27,72 @@ export default class LinearChartComponent
 
   s1: Subscription;
 
+  code = `
+    this.canvas = <HTMLCanvasElement>document.getElementById('myChart');
+
+    this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
+
+    const data = [65214, 59121, 80789, 81203, 56781];
+    this.latestData = data[data.length - 1];
+
+    this.config = {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [
+          {
+            label: 'Bank balance',
+            data,
+            borderColor: '#ef0078',
+            tension: 0.4,
+            pointRadius: 2,
+            fill: true,
+            pointBackgroundColor: '#ef0078',
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            display: false,
+          },
+          y: {
+            display: false,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      },
+    };
+    this.myChart = new Chart(this.ctx, this.config);
+
+    this.s1 = this.themeService.getThemeObservable().subscribe((theme) => {
+      this.setThemeColor(theme);
+    });
+
+    setThemeColor(theme: Theme): void {
+      if (theme === 'dark') {
+        const gradientBgDark = this.ctx?.createLinearGradient(0, 0, 0, 200);
+        gradientBgDark?.addColorStop(0, '#303030');
+        gradientBgDark?.addColorStop(1, '#424242');
+        this.config.data.datasets[0].backgroundColor = gradientBgDark;
+        this.config.data.datasets[0].borderColor = '#ff9500';
+        this.config.data.datasets[0].pointBackgroundColor = '#ff9500';
+      } else {
+        const gradientBg = this.ctx?.createLinearGradient(0, 0, 0, 200);
+        gradientBg?.addColorStop(0, '#fbe2f0');
+        gradientBg?.addColorStop(1, '#FFFFFF');
+        this.config.data.datasets[0].backgroundColor = gradientBg;
+        this.config.data.datasets[0].borderColor = '#ef0078';
+        this.config.data.datasets[0].pointBackgroundColor = '#ef0078';
+      }
+      this.myChart?.update();
+    }    
+    `;
+
   constructor(private themeService: ThemeService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -96,7 +162,12 @@ export default class LinearChartComponent
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CodePreviewComponent);
+    const dialogRef = this.dialog.open(CodePreviewComponent, {
+      height: '80vh',
+      data: {
+        code: this.code,
+      },
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

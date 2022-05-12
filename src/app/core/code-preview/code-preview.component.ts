@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HighlightLoader } from 'ngx-highlightjs';
 import { Subscription } from 'rxjs';
 import ThemeService from 'src/app/services/theme.service';
@@ -12,17 +13,16 @@ const themeObsidian: string = '/assets/obsidian.css';
   styleUrls: ['./code-preview.component.css'],
 })
 export default class CodePreviewComponent {
-  code = `function myFunction() {
-    document.getElementById("demo1").innerHTML = "Test 1!";
-    document.getElementById("demo2").innerHTML = "Test 2!";
-  }`;
+  code: string;
 
   s1: Subscription;
 
   constructor(
     private hljsLoader: HighlightLoader,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.code = this.data.code;
     this.hljsLoader.setTheme(
       this.themeService.currentTheme === 'light' ? themeGithub : themeObsidian
     );
