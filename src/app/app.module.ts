@@ -55,7 +55,7 @@ import CodePreviewComponent from './core/code-preview/code-preview.component';
       provide: HIGHLIGHT_OPTIONS,
       useValue: <HighlightOptions>{
         coreLibraryLoader: () => import('highlight.js/lib/core'),
-        themePath: 'assets/styles/github.css',
+        themePath: 'assets/github.css',
         languages: {
           typescript: () => import('highlight.js/lib/languages/typescript'),
         },
