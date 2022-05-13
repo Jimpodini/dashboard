@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HighlightLoader } from 'ngx-highlightjs';
 import {
   BehaviorSubject,
   distinctUntilChanged,
@@ -7,6 +8,8 @@ import {
 } from 'rxjs';
 
 const startingTheme: Theme = 'light';
+const themeGithub: string = '/assets/github.css';
+const themeObsidian: string = '/assets/obsidian.css';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +19,12 @@ export default class ThemeService {
 
   themeObservable$ = this.themeSubject.asObservable();
 
-  currentTheme: Theme = startingTheme;
+  constructor(private hljsLoader: HighlightLoader) {
+    this.hljsLoader.setTheme(themeGithub);
+  }
 
   switchTheme(theme: Theme) {
-    this.currentTheme = theme;
+    this.hljsLoader.setTheme(theme === 'light' ? themeGithub : themeObsidian);
     this.themeSubject.next(theme);
   }
 
