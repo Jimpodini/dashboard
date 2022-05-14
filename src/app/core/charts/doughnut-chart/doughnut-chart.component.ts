@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
 import { Subscription } from 'rxjs';
 import ThemeService, { Theme } from 'src/app/services/theme.service';
+import CodePreviewComponent from '../../code-preview/code-preview.component';
 import { DashboardChart } from '../dashboard-chart.interface';
 
 @Component({
@@ -32,6 +33,63 @@ export default class DoughnutChart
   };
 
   s1: Subscription;
+
+  code = `
+    this.canvas = <HTMLCanvasElement>document.getElementById('myDoughnutChart');
+
+    this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
+
+    const data = {
+      labels: ['Food', 'Housing', 'Transportation', 'Entertainment'],
+      datasets: [
+        {
+          data: [65214, 59121, 80789, 81203],
+          backgroundColor: ['#880061', '#c7006e', '#ef0078', '#ef4fa6'],
+        },
+      ],
+    };
+
+    this.config = {
+      type: 'doughnut',
+      data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'black',
+            },
+          },
+        },
+      },
+    };
+    this.myChart = new Chart(this.ctx, this.config);
+
+    this.s1 = this.themeService.getThemeObservable().subscribe((theme) => {
+      this.setThemeColor(theme);
+    });
+
+    setThemeColor(theme: Theme): void {
+      if (theme === 'dark') {
+        this.config.data.datasets[0].backgroundColor = [
+          '#e64d03',
+          '#f57902',
+          '#ff9500',
+          '#ffb54c',
+        ];
+        this.config.options.plugins.legend.labels.color = 'white';
+      } else {
+        this.config.data.datasets[0].backgroundColor = [
+          '#880061',
+          '#c7006e',
+          '#ef0078',
+          '#ef4fa6',
+        ];
+        this.config.options.plugins.legend.labels.color = 'black';
+      }
+      this.myChart?.update();
+    }
+    `;
 
   constructor(private themeService: ThemeService, public dialog: MatDialog) {}
 
@@ -93,10 +151,11 @@ export default class DoughnutChart
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    this.dialog.open(CodePreviewComponent, {
+      height: '80vh',
+      data: {
+        code: this.code,
+      },
     });
   }
 

@@ -162,15 +162,11 @@ export default class LinearChartComponent
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CodePreviewComponent, {
+    this.dialog.open(CodePreviewComponent, {
       height: '80vh',
       data: {
         code: this.code,
       },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 
