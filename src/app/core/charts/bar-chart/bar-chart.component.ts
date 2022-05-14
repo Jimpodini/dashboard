@@ -143,7 +143,6 @@ export default class BarChartComponent
 
   openDialog() {
     this.dialog.open(CodePreviewComponent, {
-      height: '80vh',
       data: {
         code: this.code,
       },

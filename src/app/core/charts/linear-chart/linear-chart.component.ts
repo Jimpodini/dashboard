@@ -163,7 +163,6 @@ export default class LinearChartComponent
 
   openDialog() {
     this.dialog.open(CodePreviewComponent, {
-      height: '80vh',
       data: {
         code: this.code,
       },

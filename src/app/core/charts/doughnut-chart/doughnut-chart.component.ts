@@ -152,7 +152,6 @@ export default class DoughnutChart
 
   openDialog() {
     this.dialog.open(CodePreviewComponent, {
-      height: '80vh',
       data: {
         code: this.code,
       },
