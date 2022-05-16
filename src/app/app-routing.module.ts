@@ -5,10 +5,11 @@ import DoughnutChart from './core/charts/doughnut-chart/doughnut-chart.component
 import LandingPageComponent from './pages/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', redirectTo: '/linearchart', pathMatch: 'full' },
   { path: 'linearchart', component: LandingPageComponent },
   { path: 'barchart', component: BarChartComponent },
   { path: 'doughnutchart', component: DoughnutChart },
+  { path: '**', redirectTo: '/linearchart', pathMatch: 'full' },
 ];
 
 @NgModule({
