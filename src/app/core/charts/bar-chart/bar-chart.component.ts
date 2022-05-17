@@ -101,8 +101,8 @@ export default class BarChartComponent
           {
             label: 'Transactions',
             data,
-            borderColor: '#ef0078',
-            backgroundColor: '#ef0078',
+            borderColor: this.themeService.primaryColors.primary500,
+            backgroundColor: this.themeService.primaryColors.primary500,
           },
         ],
       },
@@ -132,11 +132,15 @@ export default class BarChartComponent
 
   setThemeColor(theme: Theme): void {
     if (theme === 'dark') {
-      this.config.data.datasets[0].backgroundColor = '#ff9500';
-      this.config.data.datasets[0].borderColor = '#ff9500';
+      this.config.data.datasets[0].backgroundColor =
+        this.themeService.primaryDarkColors.primary500;
+      this.config.data.datasets[0].borderColor =
+        this.themeService.primaryDarkColors.primary500;
     } else {
-      this.config.data.datasets[0].backgroundColor = '#ef0078';
-      this.config.data.datasets[0].borderColor = '#ef0078';
+      this.config.data.datasets[0].backgroundColor =
+        this.themeService.primaryColors.primary500;
+      this.config.data.datasets[0].borderColor =
+        this.themeService.primaryColors.primary500;
     }
     this.myChart?.update();
   }

@@ -111,11 +111,11 @@ export default class LinearChartComponent
           {
             label: 'Bank balance',
             data,
-            borderColor: '#ef0078',
+            borderColor: this.themeService.primaryColors.primary500,
             tension: 0.4,
             pointRadius: 2,
             fill: true,
-            pointBackgroundColor: '#ef0078',
+            pointBackgroundColor: this.themeService.primaryColors.primary500,
           },
         ],
       },
@@ -145,18 +145,34 @@ export default class LinearChartComponent
   setThemeColor(theme: Theme): void {
     if (theme === 'dark') {
       const gradientBgDark = this.ctx?.createLinearGradient(0, 0, 0, 200);
-      gradientBgDark?.addColorStop(0, '#303030');
-      gradientBgDark?.addColorStop(1, '#424242');
+      gradientBgDark?.addColorStop(
+        0,
+        <string>this.themeService.primaryDarkColors.background
+      );
+      gradientBgDark?.addColorStop(
+        1,
+        <string>this.themeService.primaryDarkColors.cardBackground
+      );
       this.config.data.datasets[0].backgroundColor = gradientBgDark;
-      this.config.data.datasets[0].borderColor = '#ff9500';
-      this.config.data.datasets[0].pointBackgroundColor = '#ff9500';
+      this.config.data.datasets[0].borderColor =
+        this.themeService.primaryDarkColors.primary500;
+      this.config.data.datasets[0].pointBackgroundColor =
+        this.themeService.primaryDarkColors.primary500;
     } else {
       const gradientBg = this.ctx?.createLinearGradient(0, 0, 0, 200);
-      gradientBg?.addColorStop(0, '#fbe2f0');
-      gradientBg?.addColorStop(1, '#FFFFFF');
+      gradientBg?.addColorStop(
+        0,
+        <string>this.themeService.primaryColors.primary50
+      );
+      gradientBg?.addColorStop(
+        1,
+        <string>this.themeService.primaryColors.cardBackground
+      );
       this.config.data.datasets[0].backgroundColor = gradientBg;
-      this.config.data.datasets[0].borderColor = '#ef0078';
-      this.config.data.datasets[0].pointBackgroundColor = '#ef0078';
+      this.config.data.datasets[0].borderColor =
+        this.themeService.primaryColors.primary500;
+      this.config.data.datasets[0].pointBackgroundColor =
+        this.themeService.primaryColors.primary500;
     }
     this.myChart?.update();
   }

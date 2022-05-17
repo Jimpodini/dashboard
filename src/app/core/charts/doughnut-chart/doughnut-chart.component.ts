@@ -103,7 +103,12 @@ export default class DoughnutChart
       datasets: [
         {
           data: [65214, 59121, 80789, 81203],
-          backgroundColor: ['#880061', '#c7006e', '#ef0078', '#ef4fa6'],
+          backgroundColor: [
+            this.themeService.primaryColors.primary900,
+            this.themeService.primaryColors.primary700,
+            this.themeService.primaryColors.primary500,
+            this.themeService.primaryColors.primary300,
+          ],
         },
       ],
     };
@@ -132,18 +137,18 @@ export default class DoughnutChart
   setThemeColor(theme: Theme): void {
     if (theme === 'dark') {
       this.config.data.datasets[0].backgroundColor = [
-        '#e64d03',
-        '#f57902',
-        '#ff9500',
-        '#ffb54c',
+        this.themeService.primaryDarkColors.primary900,
+        this.themeService.primaryDarkColors.primary700,
+        this.themeService.primaryDarkColors.primary500,
+        this.themeService.primaryDarkColors.primary300,
       ];
       this.config.options.plugins.legend.labels.color = 'white';
     } else {
       this.config.data.datasets[0].backgroundColor = [
-        '#880061',
-        '#c7006e',
-        '#ef0078',
-        '#ef4fa6',
+        this.themeService.primaryColors.primary900,
+        this.themeService.primaryColors.primary700,
+        this.themeService.primaryColors.primary500,
+        this.themeService.primaryColors.primary300,
       ];
       this.config.options.plugins.legend.labels.color = 'black';
     }
