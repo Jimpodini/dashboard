@@ -5,22 +5,32 @@
 @use "./app/core/layout/navbar-item/navbar-item-theme" as navbar-item;
 @use "./app/core/layout/layout-theme" as layout-theme;
 
+@use "sass:map";
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+:root {
+  --primary-50: #fbe2f0;
+  --primary-300: #ef4fa6;
+  --primary-500: #ef0078;
+  --primary-700: #c7006e;
+  --primary-900: #880061;
+}
+
 $primary-palette: (
-  50: #fbe2f0,
+  50: var(--primary-50),
   100: #f5b6da,
   200: #f186c0,
-  300: #ef4fa6,
+  300: var(--primary-300),
   400: #ee0290,
-  500: #ef0078,
+  500: var(--primary-500),
   600: #dd0074,
-  700: #c7006e,
+  700: var(--primary-700),
   800: #b1006a,
-  900: #880061,
+  900: var(--primary-900),
   contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
@@ -35,17 +45,24 @@ $primary-palette: (
   ),
 );
 
+:root {
+  --dark-primary-300: #ffb54c;
+  --dark-primary-500: #ff9500;
+  --dark-primary-700: #f57902;
+  --dark-primary-900: #e64d03;
+}
+
 $accent-palette: (
   50: #fff3e0,
   100: #ffdfb1,
   200: #ffca7f,
-  300: #ffb54c,
+  300: var(--dark-primary-300),
   400: #ffa425,
-  500: #ff9500,
+  500: var(--dark-primary-500),
   600: #fb8901,
-  700: #f57902,
+  700: var(--dark-primary-700),
   800: #ef6902,
-  900: #e64d03,
+  900: var(--dark-primary-900),
   contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
@@ -81,6 +98,14 @@ $dashboard-app-theme: mat.define-light-theme(
   )
 );
 
+$color-config: mat.get-color-config($dashboard-app-theme);
+$background: map.get($color-config, background);
+$card-background: mat.get-color-from-palette($background, card);
+
+:root {
+  --card-background: #{$card-background};
+}
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -102,6 +127,16 @@ $angular-dark-theme: mat.define-dark-theme(
     ),
   )
 );
+
+$dark-color-config: mat.get-color-config($angular-dark-theme);
+$background: map.get($dark-color-config, background);
+$dark-card-background: mat.get-color-from-palette($background, card);
+$dark-background: mat.get-color-from-palette($background, background);
+
+:root {
+  --dark-card-background: #{$dark-card-background};
+  --dark-background: #{$dark-background};
+}
 
 .darkMode {
   @include mat.all-component-themes($angular-dark-theme);
